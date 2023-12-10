@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InternEase</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-list">
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('internships') }}">Internships</a></li>
+                <li><a href="{{ url_for('about') }}">About</a></li>
+                <li><a href="{{ url_for('contact') }}">Contact</a></li>
+                <li><a href="{{ url_for('login')}}">Login</a> </li>
+            </ul>
+            <div class="profile-icon">
+                <a href="{{ url_for('profile') }}"><i class="fas fa-user"></i></a>
+            </div>
+        </nav>          
+    </header>
+    <main>
+        <h2>Admin Dashboard</h2>
+        <div class="dashboard-con">
+        <div class="container">
+        {% for internship in internships %}
+   
+        <h4>{{ internship.title }}</h4>
+        <p>Company: {{ internship.company }}</p>
+        <p>Location: {{ internship.location }}</p>
+        <p>Duration: {{ internship.duration }}</p>
+        <p>Description: {{ internship.description }}</p>
+
+        <a href="{{ url_for('update_internship', internship_id=internship.id) }}">Update</a>
+        <br>
+        <form action="{{ url_for('delete_internship', internship_id=internship.id) }}" method="post">
+            <button type="submit">Delete</button>
+        </form>
+       
+        {% endfor %}
+        
+        <br>
+        <form action="{{ url_for('admin_dashboard') }}" method="post">
+            
+                <div class="form-group">
+                    <div>
+            <label for="title">Title:</label>
+        </div><div>
+            <input type="text" id="title" name="title" required>
+        </div><div>
+            <label for="company">Company:</label>
+        </div><div>
+            <input type="text" id="company" name="company" required>
+        </div><div>
+            <label for="location">Location:</label>
+        </div><div>
+            <input type="text" id="location" name="location" required>
+        </div><div>
+            <label for="duration">Duration:</label>
+        </div><div>
+            <input type="text" id="duration" name="duration" required>
+        </div><div>
+            <label for="description">Description:</label>
+        </div><div>
+            <textarea id="description" name="description" required></textarea>
+        </div>
+                </div>
+            <button type="submit">Add Internship</button>
+        
+            
+        </div>
+        </form>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul>
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+        <br>
+        <div class="con">
+        <h2>Company Officials</h2>
+        <ul>
+            {% for official in officials %}
+            <div class="container">
+                    <h3>{{ official.username }}</h3>
+                    <!-- Add more official details here -->
+                    <a href="{{ url_for('update_company_official', official_id=official.id) }}">Update</a> <br>
+                    <form method="POST" action="{{ url_for('delete_company_official', official_id=official.id) }}">
+                        <input type="submit" value="Delete">
+                    </form>
+                    </div>
+
+            {% endfor %}
+        </ul>
+        <a href="{{ url_for('create_company_official') }}">Create Company Official</a>
+    </div>
+        </div>
+    </main>
+    <footer class="footer">
+        <p>&copy; 2023 InternEase. All rights reserved.</p>
+    </footer>
+</body>
+</html>

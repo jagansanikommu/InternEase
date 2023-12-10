@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InternEase</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-list">
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('internships') }}">Internships</a></li>
+                <li><a href="{{ url_for('about') }}">About</a></li>
+                <li><a href="{{ url_for('contact') }}">Contact</a></li>
+                <li><a href="{{ url_for('login')}}">Login</a> </li>
+            </ul>
+            <div class="profile-icon">
+                <a href="{{ url_for('profile') }}"><i class="fas fa-user"></i></a>
+            </div>
+        </nav>          
+    </header>
+<main>
+    <h2>Register for Internship Opportunities</h2>
+    <form action="{{ url_for('register') }}" method="post">
+        <div class="container">
+            <div class="form-group">
+                <div>
+                    <label for="name">Name:</label>
+                </div>
+                <div>
+                    <input type="text" id="name" name="name" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <div>
+                    <label for="email">Email:</label>
+                </div>
+                <div>
+                    <input type="email" id="email" name="email" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <div>
+                    <label for="college">College:</label>
+                </div>
+                <div>
+                    <input type="text" id="college" name="college" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <div>
+                    <label for="course">Course:</label>
+                </div>
+                <div>
+                    <input type="text" id="course" name="course" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <div>
+                    <label for="year">Year:</label>
+                </div>
+                <div>
+                    <input type="number" id="year" name="year" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <div>
+                    <label for="password">Password:</label>
+                </div>
+                <div>
+                    <input type="password" id="password" name="password" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <div>
+                    <label for="password">Skills:</label>
+                </div>
+                <div>
+                    <select name="skills" id="skills" multiple style="color: black; background-color: white;">
+                        {% for skill in skills %}
+                            <option value="{{ skill.id }}" {% if skill in current_user.skills %}selected{% endif %}>{{ skill.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            
+            <button type="submit">Register</button>
+        </div>
+    </form>
+    
+    <script>
+        $(document).ready(function() {
+            $('#skills').select2();
+        });
+        </script>
+    <p>Already have an account? <a href="/login">Login</a></p>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+</main>
+    <footer class="footer">
+        <p>&copy; 2023 InternEase. All rights reserved.</p>
+    </footer>
+</body>
+</html>

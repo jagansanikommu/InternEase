@@ -1,0 +1,400 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+
+body {
+    background-color: rgb(49, 47, 47) !important;
+}
+
+.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1em;
+    background-color: #333;
+    width: 95%; /* decrease the width to 80% of the parent container */
+    margin: auto; /* center the navbar */
+}
+.navbar-brand {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.nav-list {
+    list-style-type: none;
+    display: flex;
+}
+
+.nav-list li {
+    margin-right: 1em;
+}
+
+.nav-list li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.nav-list li a:hover {
+    color: #ddd;
+}
+
+
+
+.social-icons i {
+    color: white;
+    margin-left: 30px;
+}
+
+.about{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    padding: 100px;
+}
+
+.about-item{
+    color: white;
+    width: 100%;
+    margin-left: 100px;
+}
+
+#t::before {
+    content: "generated revenue";
+    animation: animate infinite 10s;
+    padding-left: 10px;
+    color: yellow;
+}
+
+@keyframes animate {
+
+    0% {
+        content: "generated revenue";
+    }
+
+    50% {
+        content: "startegy creation";
+    }
+
+    75% {
+        content: "customize tools";
+    }
+}
+
+.icon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 50px;
+}
+
+.icon-item{
+    color: grey;
+    margin-right: 100px;
+    
+}
+
+.display{
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.card{
+    text-align: left;
+    padding: 8%;
+    background-color: black !important;
+}
+
+.card:hover{
+    background-color: black!important;
+}
+
+.card  p{
+   visibility: hidden; 
+}
+
+.card:hover  p{
+   visibility: visible; 
+}
+
+.card:hover  i{
+   visibility: hidden; 
+}
+
+.portfolio{
+    padding-bottom: 50px;
+}
+
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+    padding: 20px;
+}
+
+.image-item img {
+    width: 90%;
+    height: 75%;
+    border-radius: 5px;
+}
+
+#reviews{
+    text-align: center;
+    padding: 200px;
+    color: grey;
+    width: 250%;
+    margin-left: 100px;
+    font-size: x-large;
+}
+
+.contact{
+    margin: 50px;
+    padding-bottom: 50px;
+}
+
+.bottom{
+    padding-top:10%;
+    background-color: rgb(90, 90, 90);
+    justify-content: center;
+    align-content: center;
+}
+
+.bottom h6{
+    text-align: center;
+}
+   
+.bottom h1{
+    text-align: center;
+    font-weight: bold;
+    color:white
+   
+}
+   
+input{
+   color:828282;
+   background-color: rgb(255, 254, 254); 
+   border:none;
+   width: 50%;
+   padding: 20px;
+   align-content: center;
+   border-bottom:  1px dotted white;
+}
+
+textarea:focus, input:focus{
+    outline: none;
+}
+   
+#chb{
+    margin: 0;
+    align-content: left;
+    height: auto;
+    width: auto;
+}
+
+#btns{
+    border:none;
+    align-self: center;
+    border:1px dotted black;
+    background-color: rgb(49, 47, 47); 
+    height: 50px;
+    width: 200px;
+    padding: 0px;
+    line-height: 1.5;
+    border-radius: 5%;
+    margin:0 45%   
+}
+
+.details{
+    padding: 50px;
+}
+
+.footer {
+    background-color: black !important;
+    color: white !important;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer-left{
+    display: flex;
+    padding: 20px;
+}
+
+.footer-left p{
+    margin-right: 20px;
+}
+
+
+.login_form_container{
+    position: relative;
+    width: 400px;
+    height: 470px;
+    max-width: 400px;
+    max-height: 470px;
+    background: #040717;
+    border-radius: 50px 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin-top: 70px;
+}
+.login_form_container::before{
+    
+    position: absolute;
+    width: 170%;
+    height: 170%;
+    content: '';
+    background-image: conic-gradient(transparent, transparent, transparent, #ee00ff);
+    animation: rotate_border 6s linear infinite;
+
+}
+.login_form_container::after{
+    
+    position: absolute;
+    width: 170%;
+    height: 170%;
+    content: '';
+    background-image: conic-gradient(transparent, transparent, transparent, #00ccff);
+    animation: rotate_border 6s linear infinite;
+    animation-delay: -3s;
+}
+@keyframes rotate_border{
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+.login_form{
+    position: absolute;
+    content: '';
+    background-color: #0c1022;
+    border-radius: 50px 5px;
+    inset: 5px;
+    padding: 50px 40px;
+    z-index: 10;
+    color: #00ccff;
+
+} 
+h2{
+    font-size: 40px;
+    font-weight: 600;
+    text-align: center;
+}
+.input_group{
+    margin-top: 40px;
+    position:relative;
+    display:flex;
+    align-items: center;
+    justify-content: start;
+}
+.input_text{
+    width: 95%;
+    height: 30px;
+    background: transparent;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #00ccff;
+    font-size: 20px;
+    padding-left: 10px;
+    color: #00ccff;
+
+}
+::placeholder{
+    font-size: 15px;
+    color: #00ccff52;
+    letter-spacing: 1px;
+
+}
+.fa{
+    font-size: 20px;
+
+}
+#login_button{
+    position: relative;
+    width: 300px;
+    height: 40px;
+    transition: 1s;
+    margin-top: 70px;
+
+
+}
+#login_button a{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    z-index: 10;
+    cursor: pointer;
+    font-size: 22px;
+    letter-spacing: 2px;
+    border: 1px solid #00ccff;
+    border-radius: 50px;
+    background-color: #0c1022;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.glowIcon {
+    text-shadow: 0 0 10px #00ccff;
+
+}
+
+
+.register_form_container{
+    position: relative;
+    width: 500px;
+    height: 800px;
+    max-width: 400px;
+    max-height: 800px;
+    background: #040717;
+    border-radius: 50px 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin-top: 70px;
+}
+.register_form_container::before{
+    
+    position: absolute;
+    width: 170%;
+    height: 170%;
+    content: '';
+    background-image: conic-gradient(transparent, transparent, transparent, #ee00ff);
+    animation: rotate_border 6s linear infinite;
+
+}
+.register_form_container::after{
+    
+    position: absolute;
+    width: 170%;
+    height: 170%;
+    content: '';
+    background-image: conic-gradient(transparent, transparent, transparent, #00ccff);
+    animation: rotate_border 6s linear infinite;
+    animation-delay: -3s;
+}
+
+.register_form{
+    position: absolute;
+    content: '';
+    background-color: #0c1022;
+    border-radius: 50px 5px;
+    inset: 5px;
+    padding: 50px 40px;
+    z-index: 10;
+    color: #00ccff;
+
+} 
+
+
+

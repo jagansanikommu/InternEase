@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InternEase</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-list">
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('internships') }}">Internships</a></li>
+                <li><a href="{{ url_for('about') }}">About</a></li>
+                <li><a href="{{ url_for('contact') }}">Contact</a></li>
+                <li><a href="{{ url_for('login')}}">Login</a> </li>
+            </ul>
+            <div class="profile-icon">
+                <a href="{{ url_for('profile') }}"><i class="fas fa-user"></i></a>
+            </div>
+        </nav>       
+    </header>
+    <main>
+        <div class="container">
+        <h1>Create Company Official</h1>
+    <form method="POST">
+        <label for="username">Username:</label><br>
+        <input type="text" id="username" name="username"><br>
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password"><br>
+        <label for="company">Company:</label><br>
+        <input type="text" id="company" name="company"><br>
+        <input type="submit" value="Create">
+    </form>
+        </div>
+    </main>
+    <footer class="footer">
+        <p>&copy; 2023 InternEase. All rights reserved.</p>
+    </footer>
+</body>
+</html>

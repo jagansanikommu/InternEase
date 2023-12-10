@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InternEase</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-list">
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('internships') }}">Internships</a></li>
+                <li><a href="{{ url_for('about') }}">About</a></li>
+                <li><a href="{{ url_for('contact') }}">Contact</a></li>
+                <li><a href="{{ url_for('login')}}">Login</a> </li>
+            </ul>
+            <div class="profile-icon">
+                <a href="{{ url_for('profile') }}"><i class="fas fa-user"></i></a>
+            </div>
+        </nav>          
+    </header>
+    <main style="padding: 5%;">
+        <div class="container" style="justify-content: flex-start; align-items: flex-start; padding-left: 5%;">
+        <h2>Welcome, {{ current_user.name }}!</h2>
+        <div class="form-group">
+            <label for="availability">Availability:</label>
+            <input type="checkbox" id="availability" name="availability" {% if current_user.availability %}checked{% endif %}>
+        </div>
+        <p>Email: {{ current_user.email }}</p>
+        <p>College: {{ current_user.college }}</p>
+        <p>Course: {{ current_user.course }}</p>
+        <p>Year: {{ current_user.year }}</p>
+        {% if edit %}
+        <form method="POST">
+            <!-- ... -->
+            <select name="skills" id="skills" multiple style="color: black; background-color: white;">
+                {% for skill in skills %}
+                    <option value="{{ skill.id }}" {% if skill in current_user.skills %}selected{% endif %}>{{ skill.name }}</option>
+                {% endfor %}
+            </select>
+            <input type="submit" value="Save Changes">
+        </form>
+    {% else %}
+    <div class="skills-container">
+        <h3>Your Skills</h3>
+        <ul class="skills-list">
+          {% for skill in current_user.skills %}
+            <li>{{ skill.name }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+        <a href="{{ url_for('profile', edit=True) }}" class="fancy-button">Edit</a>
+    {% endif %}
+        <h3>Your Internship Applications</h3>
+        <ul>
+            {% for application in current_user.applications %}
+                <li>
+                    <h4>{{ application.internship.title }}</h4>
+                    <p>Company: {{ application.internship.company }}</p>
+                    <p>Status: {{ application.status }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+        </div>
+        <script>
+            $(document).ready(function() {
+                $('#skills').select2();
+            });
+            </script>
+        <br>
+        <a href="{{ url_for('logout') }}" class="fancy-button">Logout</a>
+    </main>
+    <footer class="footer">
+        <p>&copy; 2023 InternEase. All rights reserved.</p>
+    </footer>
+</body>
+</html>

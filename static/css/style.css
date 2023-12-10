@@ -1,0 +1,197 @@
+/* Add your custom CSS styles here */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #000;
+  color: rgb(106, 122, 227);
+  padding-bottom: 60px; /* Adjust this value according to the height of your footer */
+}
+
+header {
+    background-color: #000;
+    color: gold;
+    text-align: center;
+    padding: 1rem;
+}
+.navbar {
+  background-color: #333;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+}
+
+.nav-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-list li {
+  float: left;
+}
+
+.nav-list li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.nav-list li a:hover {
+  background-color: #111;
+}
+
+.profile-icon {
+  float: right;
+  padding: 14px 16px;
+}
+
+
+
+@media (min-width: 768px) {
+    .menu-toggle {
+      display: none;
+    }
+  }
+@media (max-width: 768px) {
+    nav ul {
+      flex-direction: column;
+      background-color: #000;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      padding: 1rem 0;
+      display: none; /* Hide the menu by default */
+      text-align: center;
+    }
+  
+    nav ul.active {
+      display: flex; /* Show the menu when active class is added */
+    }
+  
+    nav li {
+      margin: 1rem 0;
+    }
+  
+    .menu-toggle {
+      display: block; /* Show the toggle button */
+    }
+  }
+
+
+.container {
+    margin-left: 5%;
+    margin-right: 5%;
+    border: 2px solid gold;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #000000;
+}
+
+.form-group {
+    margin-bottom: 10px;
+}
+
+label {
+    font-weight: bold;
+}
+textarea,
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"] {
+    width: 250px;
+    height: 20px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+
+.footer {
+  background-color: #333;
+  color: #ffffff;
+  padding: 7px;
+  text-align: center;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  font-size: 16px;
+  height: 40px; /* Adjust this value according to your needs */
+}
+
+.internship-container {
+  background-color: #ffffffd2;
+  border: 1px solid #ddd;
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+.internship-container h3 {
+  margin-top: 0;
+  color: #333;
+}
+
+.internship-container p {
+  margin: 0.5em 0;
+}
+
+.select2-selection__rendered {
+  color: black !important;
+}
+
+.select2-selection {
+  background-color: white !important;
+}
+
+.select2-dropdown .select2-results__option {
+  color: black !important;
+  background-color: white !important;
+}
+
+.fancy-button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #395e86;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.fancy-button:hover {
+  background-color: #0056b3;
+}
+
+.skills-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.skills-list li {
+  margin-bottom: 10px;
+}
+
+.skills-list li::before {
+  content: "\2022"; /* Add bullet point before each skill */
+  color: #007BFF;
+  font-weight: bold;
+  display: inline-block;
+  width: 1em;
+}
+.skills-container {
+  background-color: #4e4949;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 5px rgba(245, 184, 184, 0.15);
+}

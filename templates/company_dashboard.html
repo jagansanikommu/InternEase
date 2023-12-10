@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InternEase</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-list">
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('internships') }}">Internships</a></li>
+                <li><a href="{{ url_for('about') }}">About</a></li>
+                <li><a href="{{ url_for('contact') }}">Contact</a></li>
+                <li><a href="{{ url_for('login')}}">Login</a> </li>
+            </ul>
+            <div class="profile-icon">
+                <a href="{{ url_for('profile') }}"><i class="fas fa-user"></i></a>
+            </div>
+        </nav>          
+    </header>
+    <main>
+
+        <h1>Welcome to the Dashboard</h1>
+        <form method="POST" autocomplete="off">
+            <!-- ... -->
+            <select name="skills" id="skills" multiple style="color: black; background-color: white; width: 100px;">
+                {% for skill in skills %}
+                    <option value="{{ skill.id }}" {% if skill in current_user.skills %}selected{% endif %}>{{ skill.name }}</option>
+                {% endfor %}
+            </select>
+        
+            <script>
+                $(document).ready(function() {
+                    $('#skills').select2();
+                });
+                </script>
+            <input type="submit" value="Filter">
+        </form>
+        <br>
+        <br>
+        <div class="internship-container">
+        {% if students %}
+            <table style="border-collapse: collapse; width: 70%;">
+                <tr style="border-bottom: 1px solid #000;">
+                    <th>Name</th>
+                    <th>Email</th>
+                    <!-- Add more columns as needed -->
+                </tr>
+                {% for student in students %}
+                    <tr style="border-bottom: 1px solid #000;">
+                        <td>{{ student.name }}</td>
+                        <td>{{ student.email }}</td>
+                        <!-- Add more cells as needed -->
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+        {% else %}
+            <p>No students found.</p>
+        {% endif %}
+        
+    </main>
+    <footer class="footer">
+        <p>&copy; 2023 InternEase. All rights reserved.</p>
+    </footer>
+</body>
+</html>
